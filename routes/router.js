@@ -6,6 +6,7 @@ const router = express.Router();
 const UserSchema = require("../models/UserSchema");
 const AUTH = require("../middleware/auth");
 const UTILS = require("../UTILS");
+const ENV = process.env
 
 /**
  * Register api
@@ -72,8 +73,8 @@ router.post(`/login`, async (req, res) => {
     // Create token
     const token = jwt.sign(
       { user_id: user._id, email },
-      process.env.TOKEN_KEY,
-      { expiresIn: process.env.TOKEN_MAX_AGE }
+      ENV.TOKEN_KEY,
+      { expiresIn: ENV.TOKEN_MAX_AGE }
     );
 
     const updateUser = await UserSchema.findOneAndUpdate(

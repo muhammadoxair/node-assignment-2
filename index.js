@@ -8,14 +8,9 @@ const router = express.Router();
 // User imports start here
 const routes = require("./routes/router");
 const AUTH = require("./middleware/auth");
+const {PORT, DATABASE_URL, BASE_API_URL, SESSION_SECRET_KEY, ORIGIN_URL} = process.env;
 
 const app = express();
-// User constants start here
-const PORT = process.env.PORT || 8080;
-const DATABASE_URL = process.env.DATABASE_URL;
-const BASE_API_URL = process.env.BASE_API_URL;
-const SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY;
-const ORIGIN_URL = process.env.ORIGIN_URL;
 // User session will be valid for 24 hours
 const MAX_AGE = 24 * 60 * 60 * 1000;
 
